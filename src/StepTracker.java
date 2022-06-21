@@ -33,6 +33,10 @@ public class StepTracker {
         public DayData[] setDayData() {
             return dayData;
         }
+
+        public DayData[] getDayData() {
+            return dayData;
+        }
     }
 
     public void setMonthToData(MonthData[] monthToData) {
@@ -44,7 +48,7 @@ public class StepTracker {
     }
 
 
-    int setTarget(int steps) {
+    public int setTarget(int steps) {
         if (steps <= 0) {
             System.out.println("Нет братик, так не пойдет, накину тебе двойную норму");
             return targetSteps = 20000;
@@ -52,4 +56,12 @@ public class StepTracker {
         return targetSteps = steps;
     }
 
+    public int calcMonthSteps(int month) {
+        MonthData monthData = new MonthData();
+        int steps = 0;
+        for(int i = 0; i < monthData.getDayData().length; i ++) {
+            steps+=monthData.getDayData()[i];
+        }
+        return steps;
+    }
 }

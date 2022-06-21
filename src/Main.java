@@ -18,6 +18,8 @@ public class Main {
                 int steps = scanner.nextInt();
                 StepTracker.MonthData[] monthToData = stepTracker.getMonthToData();
                 monthToData[mouthToSet].setDayData()[dayToSet].setSteps(steps);
+                System.out.println("Записал");
+                printMenu();
                 userInput = scanner.nextInt(); // повторное считывание данных от пользователя
             } else if  (userInput == 2) {
                 System.out.println("Какой месяц, братик?");
