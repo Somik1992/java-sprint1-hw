@@ -19,18 +19,26 @@ public class Main {
                 StepTracker.MonthData[] monthToData = stepTracker.getMonthToData();
                 monthToData[mouthToSet].setDayData()[dayToSet].setSteps(steps);
                 System.out.println("Записал");
+
                 printMenu();
-                userInput = scanner.nextInt(); // повторное считывание данных от пользователя
+                userInput = scanner.nextInt();
             } else if  (userInput == 2) {
                 System.out.println("Какой месяц, братик?");
                 int mouthStat = scanner.nextInt();
+                System.out.println("Шагов за " + mouthStat + " Месяц " + stepTracker.calcMonthSteps(mouthStat));
+                System.out.println(stepTracker.stepsInDay(mouthStat));
+                System.out.println("Среднее количество шагов за день ~ " + stepTracker.meanStepsInMonth(mouthStat));
+                System.out.println("Максимальное количество шагов за день" + stepTracker.maxStepsInMonth(mouthStat));
 
+                printMenu();
+                userInput = scanner.nextInt();
             } else if (userInput == 3) {
                 System.out.println("Какая дневная цель, братик?");
                 int userInputTarget = scanner.nextInt();
                 stepTracker.setTarget(userInputTarget);
+
                 printMenu();
-                new StepTracker();// печатаем меню ещё раз перед завершением предыдущего действия
+                // печатаем меню ещё раз перед завершением предыдущего действия
                 userInput = scanner.nextInt(); // повторное считывание данных от пользователя
             }
         }
