@@ -88,4 +88,16 @@ public class StepTracker {
         }
         return max;
     }
+
+    public int maxSeries(int month) {
+        int count = 0, max =0;
+        int i = 1;
+        while (i < monthToData[month].dayData.length) {
+            if (monthToData[month].dayData[i].step >= targetSteps) count++;
+            else count = 0;
+            if (count > max) max = count;
+            i++;
+        }
+        return max;
+    }
 }

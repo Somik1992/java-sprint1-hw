@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StepTracker stepTracker = new StepTracker();
+        Converter converter = new Converter();
         printMenu();
         int userInput = scanner.nextInt();
 
@@ -28,18 +29,18 @@ public class Main {
                 System.out.println("Шагов за " + mouthStat + " Месяц " + stepTracker.calcMonthSteps(mouthStat));
                 System.out.println(stepTracker.stepsInDay(mouthStat));
                 System.out.println("Среднее количество шагов за день ~ " + stepTracker.meanStepsInMonth(mouthStat));
-                System.out.println("Максимальное количество шагов за день" + stepTracker.maxStepsInMonth(mouthStat));
-
+                System.out.println("Максимальное количество шагов за день " + stepTracker.maxStepsInMonth(mouthStat));
+                System.out.println("Пройденная дистанция в км ~ " + converter.converStepsInDist(stepTracker.calcMonthSteps(mouthStat)));
+                System.out.println("Соженных килокалорий ~ " + converter.converStepsIneEnergy(stepTracker.calcMonthSteps(mouthStat)));
+                System.out.println("Лучшая серия: максимальное количество подряд идущих дней, в течение которых количество шагов за день было равно или выше целевого " + stepTracker.maxSeries(mouthStat));
                 printMenu();
                 userInput = scanner.nextInt();
             } else if (userInput == 3) {
                 System.out.println("Какая дневная цель, братик?");
                 int userInputTarget = scanner.nextInt();
                 stepTracker.setTarget(userInputTarget);
-
                 printMenu();
-                // печатаем меню ещё раз перед завершением предыдущего действия
-                userInput = scanner.nextInt(); // повторное считывание данных от пользователя
+                userInput = scanner.nextInt();
             }
         }
         System.out.println("Программа завершена");
