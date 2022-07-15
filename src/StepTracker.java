@@ -15,8 +15,8 @@ public class StepTracker {
         DayData[] dayData;
 
         public MonthData() {
-            dayData = new DayData[30];
-            for (int i = 0; i < dayData.length; i++) {
+            dayData = new DayData[31];
+            for (int i = 1; i < dayData.length; i++) {
                 dayData[i] = new DayData();
             }
         }
@@ -24,7 +24,10 @@ public class StepTracker {
         class DayData {
             private int step;
             public void setSteps(int step) {
-                this.step = step;
+                if (step >= 0) {
+                    this.step = step;
+                }
+                System.out.println("Не, братик так нельзя, число должно быть положительное, давай снова");
             }
 
         }
@@ -57,7 +60,7 @@ public class StepTracker {
 
     public int calcMonthSteps(int month) {
         int steps = 0;
-        for (int i = 0; i < monthToData[month].dayData.length; i++) {
+        for (int i = 1; i < monthToData[month].dayData.length; i++) {
             steps+=monthToData[month].dayData[i].step;
         }
         return steps;
@@ -65,15 +68,15 @@ public class StepTracker {
 
     public String stepsInDay(int month) {
         String result = "";
-        for (int i = 0; i < monthToData[month].dayData.length; i++) {
-            result += i+1 + " День: " + String.valueOf(monthToData[month].dayData[i].step) + ", ";
+        for (int i = 1; i < monthToData[month].dayData.length; i++) {
+            result += i + " День: " + String.valueOf(monthToData[month].dayData[i].step) + ", ";
         }
         return result;
     }
 
     public int meanStepsInMonth(int month) {
         int steps = 0;
-        for (int i = 0; i < monthToData[month].dayData.length; i++) {
+        for (int i = 1; i < monthToData[month].dayData.length; i++) {
             steps+=monthToData[month].dayData[i].step;
         }
         return steps / monthToData[month].dayData.length;
@@ -82,7 +85,7 @@ public class StepTracker {
     public int maxStepsInMonth(int month) {
         int max = 0;
         for (int i = 1; i < monthToData[month].dayData.length; i++) {
-            if (monthToData[month].dayData[i].step >= monthToData[month].dayData[0].step) {
+            if (monthToData[month].dayData[i].step >= monthToData[month].dayData[1].step) {
                 max =  monthToData[month].dayData[i].step;
             }
         }

@@ -19,8 +19,6 @@ public class Main {
                 int steps = scanner.nextInt();
                 StepTracker.MonthData[] monthToData = stepTracker.getMonthToData();
                 monthToData[mouthToSet].setDayData()[dayToSet].setSteps(steps);
-                System.out.println("Записал");
-
                 printMenu();
                 userInput = scanner.nextInt();
             } else if  (userInput == 2) {
@@ -39,6 +37,10 @@ public class Main {
                 System.out.println("Какая дневная цель, братик?");
                 int userInputTarget = scanner.nextInt();
                 stepTracker.setTarget(userInputTarget);
+                printMenu();
+                userInput = scanner.nextInt();
+            } else {
+                System.out.println("Такой команды не существует, братик, давай сначала");
                 printMenu();
                 userInput = scanner.nextInt();
             }
