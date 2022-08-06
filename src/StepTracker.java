@@ -26,8 +26,9 @@ public class StepTracker {
             public void setSteps(int step) {
                 if (step >= 0) {
                     this.step = step;
+                } else {
+                    System.out.println("Не, братик так нельзя, число должно быть положительное, давай снова");
                 }
-                System.out.println("Не, братик так нельзя, число должно быть положительное, давай снова");
             }
 
         }
@@ -79,7 +80,7 @@ public class StepTracker {
         for (int i = 1; i < monthToData[month].dayData.length; i++) {
             steps+=monthToData[month].dayData[i].step;
         }
-        return steps / monthToData[month].dayData.length;
+        return steps / (monthToData[month].dayData.length - 1);
     }
 
     public int maxStepsInMonth(int month) {

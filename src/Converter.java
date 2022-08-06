@@ -1,7 +1,7 @@
 public class Converter {
 
     public int converStepsInDist(int steps) {
-        steps = steps * 75 / 1000;
+        steps = steps * 75 / 100000;
         return steps;
     }
 
